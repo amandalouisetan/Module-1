@@ -1,0 +1,86 @@
+#include <stdio.h>
+
+#define SIZE 10
+
+void displayNumbers(int arr[]) {
+    printf("Numbers: ");
+    for (int i = 0; i < SIZE; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void displayReverse(int arr[]) {
+    printf("Reverse: ");
+    for (int i = SIZE - 1; i >= 0; i--) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void displayEvenIndices(int arr[]) {
+    printf("Even indices: ");
+    for (int i = 0; i < SIZE; i += 2) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void displayOddIndices(int arr[]) {
+    printf("Odd indices: ");
+    for (int i = 1; i < SIZE; i += 2) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void rotateRight(int arr[], int k) {
+    k = k % SIZE; // Handle rotations greater than SIZE
+    int temp[SIZE];
+    for (int i = 0; i < SIZE; i++) {
+        temp[(i + k) % SIZE] = arr[i];
+    }
+    for (int i = 0; i < SIZE; i++) {
+        arr[i] = temp[i];
+    }
+}
+
+void rotateLeft(int arr[], int k) {
+    k = k % SIZE; // Handle rotations greater than SIZE
+    int temp[SIZE];
+    for (int i = 0; i < SIZE; i++) {
+        temp[i] = arr[(i + k) % SIZE];
+    }
+    for (int i = 0; i < SIZE; i++) {
+        arr[i] = temp[i];
+    }
+}
+
+int main() {
+    int arr[SIZE];
+    
+    // Input 10 integers
+    printf("Enter 10 integers: \n");
+    for (int i = 0; i < SIZE; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Display all information without a menu
+    displayNumbers(arr);
+    displayReverse(arr);
+    displayEvenIndices(arr);
+    displayOddIndices(arr);
+
+    int k;
+    printf("Enter index k to rotate right: ");
+    scanf("%d", &k);
+    rotateRight(arr, k);
+    displayNumbers(arr); // Display after right rotation
+
+    printf("Enter index k to rotate left: ");
+    scanf("%d", &k);
+    rotateLeft(arr, k);
+    displayNumbers(arr); // Display after left rotation
+
+    return 0;
+}
