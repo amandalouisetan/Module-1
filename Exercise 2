@@ -14,17 +14,13 @@ void encryptMessage(char *message) {
 int main() {
     char message[MAX_LENGTH];
 
-    // Get message input from the user
     printf("Enter a message (max length 100): ");
     fgets(message, MAX_LENGTH, stdin);
     
-    // Print original message
     printf("Phrase: %s", message);
     
-    // Encrypt the message
     encryptMessage(message);
     
-    // Print the encrypted message
     printf("Encrypted Message: %s\n", message);
 
     return 0;
